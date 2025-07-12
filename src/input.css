@@ -2,7 +2,7 @@
 
 @layer components{
   .liststyle{
-     @apply bg-gray-600 rounded-2xl px-25 py-1.5 text-xl text-white font-bold mt-4 mb-3 cursor-pointer;
+     @apply bg-gray-600 rounded-2xl px-25 py-1.5 text-xl text-white font-bold mt-4 mb-3 cursor-pointer hover:bg-green-400;
 
 
   }
@@ -10,6 +10,10 @@
   .questionstyle{
 
     @apply text-2xl font-bold;
+  }
+
+  .selected-option{
+    @apply bg-green-400
   }
 
 }

@@ -6,6 +6,7 @@ let questionDisp=document.getElementById("Question")
 let currentIndex=0;
 let score=0;
 let optionList=document.getElementById("optionslist")
+let scoreDisp=document.querySelector("#Score h3")
 
 
 
@@ -18,7 +19,7 @@ let questions=[{
 {
   question:"Which is the top Grossing MCU Movie",
   choice:["InfinityWar","EndGame","ThorRagnork","CivilWar"],
-  answer:"Endgame"
+  answer:"EndGame"
 }
 
 
@@ -56,12 +57,14 @@ document.querySelectorAll(".optionId").forEach(element => {
 
 element.addEventListener("click",(event)=>{
   nextBtn.classList.remove("hidden")
-
+  
+  element.classList.add("selected-option")
   let selectedOption=event.target.textContent
+
 
   let actualAnswer=questions[currentIndex].answer
 
-  if(selectedOption===actualAnswer){
+  if(selectedOption==actualAnswer){
     score++
   }
   console.log(score);
@@ -81,15 +84,21 @@ nextBtn.addEventListener("click",nextQuestion)
 
 
 function nextQuestion(){
-
+  currentIndex++
   nextBtn.classList.add("hidden")
 
   if(currentIndex<questions.length){
-      currentIndex++;
       renderQuestion()
 
+  }else{
+    
 
 
+      questionDisp.classList.add("hidden")
+      startbtn.classList.add("hidden")
+      options.classList.add("hidden")
+      scoreDisp.innerHTML=`Score : ${score}/${questions.length}`
+      scoreDisp.classList.remove("hidden")
   }
 
 
